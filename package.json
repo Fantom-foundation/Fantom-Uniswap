@@ -1,0 +1,26 @@
+{
+  "name": "fantom-uniswap",
+  "version": "1.0.0",
+  "description": "Uniswap port to Fantom Opera block chain.",
+  "main": "truffle-config.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fantom-foundation/Fantom-Uniswap.git"
+  },
+  "keywords": [
+    "Fantom",
+    "DeFi",
+    "Uniswap",
+    "Solidity"
+  ],
+  "author": "Fantom Foundation",
+  "license": "GPL3",
+  "bugs": {
+    "url": "https://github.com/Fantom-foundation/Fantom-Uniswap/issues"
+  },
+  "homepage": "https://github.com/Fantom-foundation/Fantom-Uniswap#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^2.5.1"
+  }
+}
