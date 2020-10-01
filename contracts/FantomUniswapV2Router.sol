@@ -134,7 +134,7 @@ contract FantomUniswapV2Router is IUniswapV2Router {
         SafeERC20.safeTransferFrom(IERC20(token), msg.sender, pair, amountToken);
 
         // swap received FTM before posting it as ERC20
-        IWFTM(wFTM).deposit.value(amountETH)();
+        require(0 == IWFTM(wFTM).deposit.value(amountETH)(), "WFTM: deposit failed");
         assert(IWFTM(wFTM).transfer(pair, amountETH));
 
         // mint the pair share token to recipient
@@ -197,7 +197,7 @@ contract FantomUniswapV2Router is IUniswapV2Router {
         ERC20(token).safeTransfer(to, amountToken);
 
         // unwrap FTM and send the native
-        IWFTM(wFTM).withdraw(amountETH);
+        require(0 == IWFTM(wFTM).withdraw(amountETH), "WFTM: withdraw failed");
         Address.sendValue(to.toPayable(), amountETH);
     }
 
@@ -321,7 +321,7 @@ contract FantomUniswapV2Router is IUniswapV2Router {
         require(amounts[amounts.length - 1] >= amountOutMin, 'UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT');
 
         // do the wrapping so we handle ERC20-s and transfer the wrapped tokens to the first pair
-        IWFTM(wFTM).deposit.value(amounts[0])();
+        require(0 == IWFTM(wFTM).deposit.value(amounts[0])(), "WFTM: deposit failed");
         assert(IWFTM(wFTM).transfer(UniswapV2Library.pairFor(factory, path[0], path[1]), amounts[0]));
 
         // perform the swap
@@ -351,7 +351,7 @@ contract FantomUniswapV2Router is IUniswapV2Router {
         _swap(amounts, path, address(this));
 
         // unwrap received tokens and send them to the real recipient
-        IWFTM(wFTM).withdraw(amounts[amounts.length - 1]);
+        require(0 == IWFTM(wFTM).withdraw(amounts[amounts.length - 1]), "WFTM: withdraw failed");
         Address.sendValue(to.toPayable(), amounts[amounts.length - 1]);
     }
 
@@ -378,7 +378,7 @@ contract FantomUniswapV2Router is IUniswapV2Router {
         _swap(amounts, path, address(this));
 
         // unwrap to native FTM and send the amount to recipient
-        IWFTM(wFTM).withdraw(amounts[amounts.length - 1]);
+        require(0 == IWFTM(wFTM).withdraw(amounts[amounts.length - 1]), "WFTM: withdraw failed");
         Address.sendValue(to.toPayable(), amounts[amounts.length - 1]);
     }
 
@@ -398,7 +398,7 @@ contract FantomUniswapV2Router is IUniswapV2Router {
         require(amounts[0] <= msg.value, 'UniswapV2Router: EXCESSIVE_INPUT_AMOUNT');
 
         // wrap incoming FTM first and than deposit to the first swap pair
-        IWFTM(wFTM).deposit.value(amounts[0])();
+        require(0 == IWFTM(wFTM).deposit.value(amounts[0])(), "WFTM: deposit failed");
         assert(IWFTM(wFTM).transfer(UniswapV2Library.pairFor(factory, path[0], path[1]), amounts[0]));
 
         // do the swap
