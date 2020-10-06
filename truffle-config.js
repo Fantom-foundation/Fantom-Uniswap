@@ -1,4 +1,6 @@
 module.exports = {
+	contracts_directory: "./contracts/fantom",
+	contracts_build_directory: "./build",
     compilers: {
         solc: {
             version: '^0.5.17',
