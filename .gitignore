@@ -18,3 +18,7 @@ node_modules/
 
 # Idea IDE
 .idea/
+
+# OS temp files
+*.DS_Store
+
