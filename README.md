@@ -8,16 +8,16 @@ We've deployed the Uniswap protocol, originally developed on the Ethereum networ
 
 Here is the list of references to Uniswap ecosystem projects we utilize to get the protocol live on Fantom Opera block chain network. We would like to express our appreciation to the great work these projects did to create such an excellent set of secure trading tools.
 
-- (https://github.com/Uniswap/uniswap-v2-core)[Uniswap V2 Core]
-- (https://github.com/Uniswap/uniswap-v2-periphery/tree/master/contracts)[Uniswap V2 Periphery]
-- (https://github.com/makerdao/multicall)[MakerDao Multicall Aggregator]
-- (https://github.com/Uniswap/uniswap-interface)[Uniswap Web Interface]
+- [Uniswap V2 Core](https://github.com/Uniswap/uniswap-v2-core)
+- [Uniswap V2 Periphery](https://github.com/Uniswap/uniswap-v2-periphery/tree/master/contracts)
+- [MakerDao Multicall Aggregator](https://github.com/makerdao/multicall)
+- [Uniswap Web Interface](https://github.com/Uniswap/uniswap-interface)
 
 We deployed following contracts from the Uniswap protocol ecosystem:
 
 - Uniswap Core V2 contract
 - Uniswap V2 Pair
-- Multicall Aggregator
+- Uniswap Periphery updated to use WFTM tokens instead of original WETH.
 
 We also use our own implementations of following modules:
 
